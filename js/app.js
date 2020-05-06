@@ -3,8 +3,18 @@ $(document).ready(() => {
     let searchText = $('.searchText').val();
 
     getMovies(searchText);
+
     e.preventDefault();
   });
+
+  $('#submitBtn').click(() => {
+    let searchText = $('.searchText').val();
+
+    getMovies(searchText);
+  });
+
+  $(window).change(setCartHeight);
+  $(window).resize(setCartHeight);
 });
 
 function getMovies(searchText) {
@@ -27,6 +37,7 @@ function getMovies(searchText) {
       $('#movies').hide();
       $('#movies').html(output);
       $('#movies').fadeIn(1500);
+
       setCartHeight();
     })
     .catch((err) => {
@@ -45,9 +56,6 @@ function setCartHeight() {
   });
 }
 
-$(window).change(setCartHeight);
-$(window).resize(setCartHeight);
-
 function movieSelected(id) {
   sessionStorage.setItem('movieId', id);
   window.location = 'movie.html';
@@ -58,7 +66,7 @@ function getMovie() {
   let movieId = sessionStorage.getItem('movieId');
 
   axios
-    .get(`http://www.omdbapi.com/?i=tt3896198&apikey=b46cbf9c&?i=${movieId}`)
+    .get(`http://www.omdbapi.com/?i=${movieId}&apikey=b46cbf9c&`)
     .then((response) => {
       let movie = response.data;
 

@@ -12,17 +12,19 @@
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">Movie Info</a>
+          <a href="#" class="navbar-brand">Movie Info</a>
         </div>
       </div>
     </nav>
+
     <hr class="my-4" />
+
     <div class="jumbotron">
-      <h1 class="display-3">Search For Any Movie</h1>
-
+      <h1 class="display-3">
+        Search For Any Movie
+      </h1>
       <hr class="my-4" />
-
-      <div class="form-group">
+      <div class="form-group slide-up1">
         <form id="searchForm">
           <input
             type="text"
@@ -32,11 +34,14 @@
           />
         </form>
       </div>
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Search</a>
+      <p class="lead slide-up2">
+        <a id="submitBtn" class="btn btn-primary btn-lg" href="#" role="button"
+          >Search</a
+        >
       </p>
     </div>
-    <div class="container">
+
+    <div id="movieSection" class="container">
       <div id="movies" class="row"></div>
     </div>
   </body>
