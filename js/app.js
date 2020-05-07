@@ -113,36 +113,50 @@ function getMovie() {
 }
 
 function showJumbo() {
-  $('.slide-up1').slideDown();
-  $('.slide-up2').slideDown();
-  $('.my-4', '.jumbotron').slideDown();
+  $('.slide-up1').stop(true, false, true).slideDown();
+  $('.slide-up2').stop(true, false, true).slideDown();
+  $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
 }
 
 function hideJumbo() {
-  $('.slide-up1').slideUp();
-  $('.slide-up2').slideUp();
-  $('.my-4', '.jumbotron').slideUp();
+  $('.slide-up1').stop(true, false, true).slideUp();
+  $('.slide-up2').stop(true, false, true).slideUp();
+  $('.my-4', '.jumbotron').stop(true, false, true).slideUp();
 }
 
 function jumboLogic() {
-  let searchText = document.querySelector('.searchText');
   $('.jumbotron').mouseenter(function () {
     $('.slide-up1').stop(true, false, true).slideDown();
     $('.slide-up2').stop(true, false, true).slideDown();
     $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
   });
+  // $('#submitBtn').click(() => {
+  //   '.jumbotron'
+  //     .mouseleave(() => {
+  //       $('.slide-up1').stop(true, false, true).slideDown();
+  //       $('.slide-up2').stop(true, false, true).slideDown();
+  //       $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
+  //       setTimeout(hideJumbo, 5000);
+  //     })
+  //     .mouseenter(() => {
+  //       clearTimeout(hideJumbo);
+  //     });
+  // });
   $('.searchText', '.jumbotron').focusin(function () {
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode == 13) {
+        setTimeout(hideJumbo, 5000);
+      } else {
+        clearTimeout(hideJumbo);
+      }
+    });
     $('.jumbotron').mouseleave(function () {
-      $('.slide-up1').stop(true, false, true).slideDown();
-      $('.slide-up2').stop(true, false, true).slideDown();
-      $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
+      showJumbo();
     });
   });
   $('.searchText', '.jumbotron').focusout(function () {
     $('.jumbotron').mouseleave(function () {
-      $('.slide-up1').stop(true, false, true).slideUp();
-      $('.slide-up2').stop(true, false, true).slideUp();
-      $('.my-4', '.jumbotron').stop(true, false, true).slideUp();
+      hideJumbo();
     });
   });
 }
