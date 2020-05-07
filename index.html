@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css" />
     <title>Movie info</title>
   </head>
-  <body>
+  <body onload="showJumbo()">
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -19,7 +19,7 @@
 
     <hr class="my-4" />
 
-    <div class="jumbotron">
+    <div onload="jumboLogic()" class="jumbotron">
       <h1 class="display-3">
         Search For Any Movie
       </h1>

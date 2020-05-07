@@ -1,3 +1,6 @@
+// vars
+const jumbo = document.querySelector('.jumbotron');
+
 $(document).ready(() => {
   $('#searchForm').on('submit', (e) => {
     let searchText = $('.searchText').val();
@@ -15,6 +18,9 @@ $(document).ready(() => {
 
   $(window).change(setCartHeight);
   $(window).resize(setCartHeight);
+  showJumbo();
+  hideJumbo();
+  jumboLogic();
 });
 
 function getMovies(searchText) {
@@ -104,4 +110,39 @@ function getMovie() {
     .catch((err) => {
       console.log(err);
     });
+}
+
+function showJumbo() {
+  $('.slide-up1').slideDown();
+  $('.slide-up2').slideDown();
+  $('.my-4', '.jumbotron').slideDown();
+}
+
+function hideJumbo() {
+  $('.slide-up1').slideUp();
+  $('.slide-up2').slideUp();
+  $('.my-4', '.jumbotron').slideUp();
+}
+
+function jumboLogic() {
+  let searchText = document.querySelector('.searchText');
+  $('.jumbotron').mouseenter(function () {
+    $('.slide-up1').stop(true, false, true).slideDown();
+    $('.slide-up2').stop(true, false, true).slideDown();
+    $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
+  });
+  $('.searchText', '.jumbotron').focusin(function () {
+    $('.jumbotron').mouseleave(function () {
+      $('.slide-up1').stop(true, false, true).slideDown();
+      $('.slide-up2').stop(true, false, true).slideDown();
+      $('.my-4', '.jumbotron').stop(true, false, true).slideDown();
+    });
+  });
+  $('.searchText', '.jumbotron').focusout(function () {
+    $('.jumbotron').mouseleave(function () {
+      $('.slide-up1').stop(true, false, true).slideUp();
+      $('.slide-up2').stop(true, false, true).slideUp();
+      $('.my-4', '.jumbotron').stop(true, false, true).slideUp();
+    });
+  });
 }
